@@ -1,0 +1,151 @@
+/* CSS portion. Tonglu Ji */
+
+
+/* Problem 1: Mobile First View */
+
+.container {
+    display: grid;
+    width: 70%;
+    max-width: 375px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+}
+
+.container>figure {
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.container>figure>img {
+    width: 100%;
+}
+
+.logo {
+    animation: tran 10s;
+}
+
+@keyframes tran {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .logo {
+        animation-name: dissolve;
+    }
+}
+
+.jump:focus {
+    top: 0;
+}
+
+
+/* Problem 2: 650px and up */
+
+@media (min-width: 650px) {
+    .container {
+        width: 95%;
+        max-width: none;
+        grid-template-columns: 25% 25% 25%;
+        background-image: url("../images/concrete_seamless.png");
+        justify-content: space-around;
+    }
+    .container>figure {
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .container>figure:nth-child(2n) {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+}
+
+
+/* Problem 3: 750px and up */
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20% 20% 20% 20%;
+        justify-content: space-between;
+    }
+    .container>figure {
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+    .container>figure:nth-child(2n) {
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+    .container>figure:last-child {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+}
+
+
+/* Problem 4: 900px and up */
+
+@media (min-width: 900px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        grid-template-columns: none;
+        align-items: center;
+    }
+    .container>figure {
+        width: 20%;
+    }
+    .container>figure:nth-child(4n) {
+        width: 40%;
+        border: 10px solid black;
+    }
+    .container>figure:nth-child(2) {
+        order: 1;
+    }
+}
+
+
+/* Problem 5: 1050px and up */
+
+@media (min-width: 1050px) {
+    .container {
+        display: grid;
+        grid-template-columns: 50%, 50%;
+        align-items: center;
+        overflow: hidden;
+    }
+    .container>figure {
+        width: 75%;
+        margin-bottom: 20px;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        justify-self: center;
+        align-self: baseline;
+        transform: rotate(-15deg);
+    }
+    .container>figure:nth-child(4n) {
+        width: 75%;
+    }
+    .container>figure:nth-child(2) {
+        order: 0;
+    }
+    .container>figure:nth-child(2n) {
+        transform: rotate(15deg);
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+    .container>figure:last-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        transform: none;
+    }
+}
